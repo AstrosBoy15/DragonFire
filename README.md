@@ -1,20 +1,19 @@
-# DragonHunter
-The Legend of the Dragon Hunter: A top-down 2D pixel art game where you hunt for ancient treasure guarded by dangerous dragons. <B>Subject to change.<B>
+# DragonFire
+DragonFire is the graphics + audio engine that is currently being used by Draglantix. It is still in development.
+
+<B>WIP<B>
 
 Update Notes:
 
 <B>v0.01<B>
   
   ```diff
-  + Basic Engine (With unfinished parts).
-  + Clouds
-  + Camera Improvements.
-  + Tiles
-  + Font
+  + Created Engine
+  + Basic Audio and Graphics functionalities
   ```
   
   <B>v0.02<B>
    
    ```diff
-   -pending
+   -Upcoming
    ```
