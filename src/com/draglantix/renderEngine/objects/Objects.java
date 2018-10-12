@@ -15,7 +15,10 @@ public abstract class Objects {
 	protected Matrix4f transformation;
 
 	protected Vector4f color;
+	protected Vector4f[] colors;
 
+	private boolean blendColor;
+	
 	protected boolean usesWorldPos;
 
 	public Objects(int texture, Vector2f position, Vector2f rotation, Vector2f scale, Vector4f color,
@@ -27,6 +30,7 @@ public abstract class Objects {
 		this.color = color;
 		this.usesWorldPos = usesWorldPos;
 		updateTransformationMatrix(position, rotation, scale);
+		blendColor = true;
 	}
 
 	public Objects(SpriteSheet sheet, Vector2f position, Vector2f rotation, Vector2f scale, Vector4f color,
@@ -38,16 +42,43 @@ public abstract class Objects {
 		this.color = color;
 		this.usesWorldPos = usesWorldPos;
 		updateTransformationMatrix(position, rotation, scale);
+		blendColor = true;
 	}
 
+	public Objects(int texture, Vector2f position, Vector2f rotation, Vector2f scale, Vector4f[] colors,
+			boolean usesWorldPos) {
+		this.texture = texture;
+		this.position = position;
+		this.rotation = rotation;
+		this.scale = scale;
+		this.colors = colors;
+		this.usesWorldPos = usesWorldPos;
+		updateTransformationMatrix(position, rotation, scale);
+		blendColor = false;
+	}
+
+	public Objects(SpriteSheet sheet, Vector2f position, Vector2f rotation, Vector2f scale, Vector4f[] colors,
+			boolean usesWorldPos) {
+		this.sheet = sheet;
+		this.position = position;
+		this.rotation = rotation;
+		this.scale = scale;
+		this.colors = colors;
+		this.usesWorldPos = usesWorldPos;
+		updateTransformationMatrix(position, rotation, scale);
+		blendColor = false;
+	}
+	
 	public Objects(Objects obj) {
 		this.texture = obj.texture;
 		this.position = obj.position;
 		this.rotation = obj.rotation;
 		this.scale = obj.scale;
 		this.color = obj.color;
+		this.colors = obj.getColors();
 		this.usesWorldPos = obj.usesWorldPos;
 		updateTransformationMatrix(position, rotation, scale);
+		blendColor = obj.blendColor;
 	}
 
 	public abstract void tick();
@@ -114,6 +145,22 @@ public abstract class Objects {
 
 	public void setA(float alpha) {
 		this.color.w = alpha;
+	}
+	
+	public Vector4f[] getColors() {
+		return colors;
+	}
+
+	public void setColors(Vector4f[] colors) {
+		this.colors = colors;
+	}
+	
+	public void setColorI(int i, Vector4f color) {
+		colors[i] = color;
+	}
+	
+	public boolean getColorType() {
+		return blendColor;
 	}
 
 	public Matrix4f updateTransformationMatrix(Vector2f translation, Vector2f rot, Vector2f scale) {

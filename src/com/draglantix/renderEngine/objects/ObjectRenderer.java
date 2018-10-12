@@ -44,7 +44,14 @@ public abstract class ObjectRenderer {
 		} else {
 			shader.loadFinalMatrix(Functions.getFinalMatrix(transformation));
 		}
-		shader.loadColor(obj.getColor());
+		
+		shader.loadColorType(obj.getColorType());
+		
+		if(obj.getColorType()){
+			shader.loadColor(obj.getColor());
+		}else {
+			shader.loadColors(obj.getColors());
+		}
 	}
 	
 	public ObjectShader getShader() {
