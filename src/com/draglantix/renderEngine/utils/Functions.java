@@ -31,4 +31,11 @@ public class Functions {
 		matrix.scale(scale);
 		return matrix;
 	}
+	
+	public static Vector2f RotatePoint(Vector2f orig, float dis, float deg) {
+		float x = (float) ((Math.cos(Math.toRadians(deg)) * dis) + orig.x);
+		float y = (float) ((Math.sin(Math.toRadians(deg)) * dis) + orig.y);
+		
+		return new Vector2f(x, y);
+	}
 }

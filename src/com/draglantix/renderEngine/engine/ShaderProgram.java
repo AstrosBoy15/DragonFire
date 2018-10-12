@@ -1,8 +1,9 @@
 package com.draglantix.renderEngine.engine;
 
 import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.nio.FloatBuffer;
 
 import org.joml.Matrix4f;
@@ -22,8 +23,8 @@ public abstract class ShaderProgram {
 	private static FloatBuffer matrixBuffer = BufferUtils.createFloatBuffer(16);
 
 	public ShaderProgram(String key) {
-		String vertexFile = "shaders/" + key + "/vertex.glsl";
-		String fragmentFile = "shaders/" + key + "/fragment.glsl";
+		String vertexFile = "/com/draglantix/renderEngine/" + key + "/vertex.glsl";
+		String fragmentFile = "/com/draglantix/renderEngine/" + key + "/fragment.glsl";
 		vertexShaderID = loadShader(vertexFile, GL20.GL_VERTEX_SHADER);
 		fragmentShaderID = loadShader(fragmentFile, GL20.GL_FRAGMENT_SHADER);
 		programID = GL20.glCreateProgram();
@@ -100,7 +101,8 @@ public abstract class ShaderProgram {
 	private static int loadShader(String file, int type) {
 		StringBuilder shaderSource = new StringBuilder();
 		try {
-			BufferedReader reader = new BufferedReader(new FileReader(file));
+			InputStream in = Class.class.getResourceAsStream(file);
+			BufferedReader reader = new BufferedReader(new InputStreamReader(in));
 			String line;
 			while((line = reader.readLine()) != null) {
 				shaderSource.append(line).append("\n");
