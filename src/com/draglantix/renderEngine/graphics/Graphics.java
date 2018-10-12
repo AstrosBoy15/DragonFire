@@ -60,7 +60,7 @@ public class Graphics {
 			drawRect(new Rectangle(glyph));
 		}
 	}
-	
+
 	public void drawFont(Message message) {
 		message.setFont(getFont());
 		for(Glyph glyph : message.getGlyphs()) {
@@ -71,7 +71,7 @@ public class Graphics {
 	public void setFont(Font font) {
 		this.currentFont = font;
 	}
-	
+
 	public Font getFont() {
 		return currentFont;
 	}
@@ -97,4 +97,7 @@ public class Graphics {
 		return rectRender.getShader();
 	}
 
+	public void cleanUp() {
+		rectRender.cleanUp();
+	}
 }
