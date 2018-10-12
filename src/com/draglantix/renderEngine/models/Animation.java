@@ -18,7 +18,7 @@ public class Animation {
 		timer = new Timer();
 		this.frames = new Texture[amount];
 		for(int i = 0; i < amount; i++) {
-			this.frames[i] = new Texture(filename + i + ".png");
+			this.frames[i] = new Texture(filename + i);
 		}
 	}
 	
