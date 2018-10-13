@@ -72,4 +72,28 @@ public class Message {
 	public Font getFont() {
 		return font;
 	}
+
+	public Vector4f getColor() {
+		return color;
+	}
+
+	public void setColor(Vector4f color) {
+		this.color = color;
+	}
+	
+	public void setR(float red) {
+		this.color.x = red;
+	}
+
+	public void setG(float green) {
+		this.color.y = green;
+	}
+
+	public void setB(float blue) {
+		this.color.z = blue;
+	}
+
+	public void setA(float alpha) {
+		this.color.w = alpha;
+	}
 }
