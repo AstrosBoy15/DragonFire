@@ -57,6 +57,14 @@ public class AudioMaster{
 		wavFile.dispose();
 		return buffer;
 	}
+	
+	public static int loadSound(WaveData data){
+		int buffer = AL10.alGenBuffers();
+		buffers.add(buffer);
+		AL10.alBufferData(buffer, data.format, data.data, data.samplerate);
+		data.dispose();
+		return buffer;
+	}
 
 	public static void cleanUp(){
 		for (int buffer : buffers){

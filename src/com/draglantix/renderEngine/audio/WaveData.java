@@ -23,7 +23,7 @@ public class WaveData {
     private final AudioInputStream audioStream;
     private final byte[] dataArray;
  
-    private WaveData(AudioInputStream stream) {
+    public WaveData(AudioInputStream stream) {
         this.audioStream = stream;
         AudioFormat audioFormat = stream.getFormat();
         format = getOpenAlFormat(audioFormat.getChannels(), audioFormat.getSampleSizeInBits());

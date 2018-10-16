@@ -15,12 +15,18 @@ public class SpriteSheet {
 
 	public SpriteSheet(String file) {
 		try {
-			this.image = ImageIO.read(new FileInputStream("res/textures/"+file+".png"));
+			this.image = ImageIO.read(new FileInputStream("res/textures/" + file + ".png"));
 			this.width = image.getWidth();
 			this.height = image.getHeight();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+
+	public SpriteSheet(BufferedImage image) {
+		this.image = image;
+		this.width = image.getWidth();
+		this.height = image.getHeight();
 	}
 
 	public BufferedImage crop(Vector2f pos, Vector2f scale) {

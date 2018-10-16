@@ -27,6 +27,15 @@ public class Animation {
 		this.loop = loop;
 	}
 	
+	public Animation(int amount, int fps, Texture[] frames, boolean loop) {
+		this.pointer = 0;
+		this.elapsedTime = 0;
+		this.fps = 1.0/(double)fps;
+		timer = new Timer();
+		this.frames = frames;
+		this.loop = loop;
+	}
+	
 	public Animation(int width, int height, int scale, int fps, SpriteSheet sheet, boolean loop) {
 		this.pointer = 0;
 		this.elapsedTime = 0;
