@@ -30,6 +30,8 @@ public class WindowBuilder {
 		glfwGetVideoMode(glfwGetPrimaryMonitor());
 		Window.setHasResized(false);
 
+		glfwWindowHint(GLFW.GLFW_RESIZABLE, Window.isResizable() ? GLFW.GLFW_TRUE : GLFW.GLFW_FALSE);
+		
 		window = glfwCreateWindow(width, height, Window.getTitle(), 0, 0);
 
 		if(window == 0)

@@ -15,11 +15,11 @@ public class Window {
 	private static int width, height;
 	private static String title;
 
-	private static boolean hasResized;
+	private static boolean hasResized, isResizable;
 
 	private static Input input;
 
-	public Window(int width, int height, String title) {
+	public Window(int width, int height, String title, boolean isResizable) {
 		if(!GLFW.glfwInit()) {
 			throw new IllegalStateException("Failed to initalize GLFW!");
 		}
@@ -27,6 +27,7 @@ public class Window {
 		Window.width = width;
 		Window.height = height;
 		Window.title = title;
+		Window.isResizable = isResizable;
 
 		WindowBuilder.setCallbacks();
 		WindowBuilder.createWindow();
@@ -70,6 +71,10 @@ public class Window {
 
 	public static Input getInput() {
 		return input;
+	}
+	
+	public static boolean isResizable() {
+		return isResizable;
 	}
 
 	public static void setInput(Input input) {
