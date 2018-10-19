@@ -1,4 +1,4 @@
-package com.draglantix.renderEngine.engine;
+package com.draglantix.renderEngine.shaders;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -23,8 +23,8 @@ public abstract class ShaderProgram {
 	private static FloatBuffer matrixBuffer = BufferUtils.createFloatBuffer(16);
 
 	public ShaderProgram(String key) {
-		String vertexFile = "/com/draglantix/renderEngine/" + key + "/vertex.glsl";
-		String fragmentFile = "/com/draglantix/renderEngine/" + key + "/fragment.glsl";
+		String vertexFile = "/com/draglantix/renderEngine/shaders/" + key + "Vertex.glsl";
+		String fragmentFile = "/com/draglantix/renderEngine/shaders/" + key + "Fragment.glsl";
 		vertexShaderID = loadShader(vertexFile, GL20.GL_VERTEX_SHADER);
 		fragmentShaderID = loadShader(fragmentFile, GL20.GL_FRAGMENT_SHADER);
 		programID = GL20.glCreateProgram();

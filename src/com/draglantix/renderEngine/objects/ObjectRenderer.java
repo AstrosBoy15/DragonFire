@@ -23,13 +23,16 @@ public abstract class ObjectRenderer {
 
 	public void renderMaster(Objects obj, boolean useWorldPos) {
 		GL13.glActiveTexture(GL13.GL_TEXTURE0);
-		GL11.glBindTexture(GL11.GL_TEXTURE_2D, obj.getTexture());
+		int texID = -1;
+		if(obj.getTexture() != null)
+			texID = obj.getTexture().getTextureID();
+		GL11.glBindTexture(GL11.GL_TEXTURE_2D, texID);
 		loadUniforms(obj, useWorldPos);
 		GL11.glDrawArrays(GL11.GL_TRIANGLE_STRIP, 0, graphics.getQuad().getVertexCount());
 	}
 
 	public abstract void render(Objects obj);
-	
+
 	public void render(List<Objects> objs) {
 		for(Objects obj : objs) {
 			render(obj);
@@ -44,16 +47,18 @@ public abstract class ObjectRenderer {
 		} else {
 			shader.loadFinalMatrix(Functions.getFinalMatrix(transformation));
 		}
-		
+
 		shader.loadColorType(obj.getColorType());
+
+		shader.loadUsesTex(obj.usesTex());
 		
-		if(obj.getColorType()){
+		if(obj.getColorType()) {
 			shader.loadColor(obj.getColor());
-		}else {
+		} else {
 			shader.loadColors(obj.getColors());
 		}
 	}
-	
+
 	public ObjectShader getShader() {
 		return shader;
 	}

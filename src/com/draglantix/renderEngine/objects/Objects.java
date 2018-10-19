@@ -5,10 +5,11 @@ import org.joml.Vector2f;
 import org.joml.Vector4f;
 
 import com.draglantix.renderEngine.models.SpriteSheet;
+import com.draglantix.renderEngine.models.Texture;
 
 public abstract class Objects {
 
-	protected int texture;
+	protected Texture texture;
 	protected SpriteSheet sheet;
 
 	protected Vector2f position, rotation, scale;
@@ -18,10 +19,11 @@ public abstract class Objects {
 	protected Vector4f[] colors;
 
 	private boolean blendColor;
+	private boolean usesTex = true;
 	
 	protected boolean usesWorldPos;
 
-	public Objects(int texture, Vector2f position, Vector2f rotation, Vector2f scale, Vector4f color,
+	public Objects(Texture texture, Vector2f position, Vector2f rotation, Vector2f scale, Vector4f color,
 			boolean usesWorldPos) {
 		this.texture = texture;
 		this.position = position;
@@ -31,6 +33,19 @@ public abstract class Objects {
 		this.usesWorldPos = usesWorldPos;
 		updateTransformationMatrix(position, rotation, scale);
 		blendColor = true;
+	}
+	
+	public Objects(Vector2f position, Vector2f rotation, Vector2f scale, Vector4f color,
+			boolean usesWorldPos) {
+		this.texture = null;
+		this.position = position;
+		this.rotation = rotation;
+		this.scale = scale;
+		this.color = color;
+		this.usesWorldPos = usesWorldPos;
+		updateTransformationMatrix(position, rotation, scale);
+		blendColor = true;
+		usesTex = false;
 	}
 
 	public Objects(SpriteSheet sheet, Vector2f position, Vector2f rotation, Vector2f scale, Vector4f color,
@@ -45,7 +60,7 @@ public abstract class Objects {
 		blendColor = true;
 	}
 
-	public Objects(int texture, Vector2f position, Vector2f rotation, Vector2f scale, Vector4f[] colors,
+	public Objects(Texture texture, Vector2f position, Vector2f rotation, Vector2f scale, Vector4f[] colors,
 			boolean usesWorldPos) {
 		this.texture = texture;
 		this.position = position;
@@ -79,15 +94,16 @@ public abstract class Objects {
 		this.usesWorldPos = obj.usesWorldPos;
 		updateTransformationMatrix(position, rotation, scale);
 		blendColor = obj.blendColor;
+		usesTex = obj.usesTex;
 	}
 
 	public abstract void tick();
 
-	public int getTexture() {
+	public Texture getTexture() {
 		return texture;
 	}
 
-	public void setTexture(int texture) {
+	public void setTexture(Texture texture) {
 		this.texture = texture;
 	}
 
@@ -125,6 +141,10 @@ public abstract class Objects {
 
 	public Vector4f getColor() {
 		return color;
+	}
+	
+	public boolean usesTex() {
+		return usesTex;
 	}
 
 	public void setColor(Vector4f color) {

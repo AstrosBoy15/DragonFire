@@ -49,7 +49,7 @@ public class Message {
 			} else {
 				orig = pos;
 			}
-			glyphs.add(new Glyph(texture.getTextureID(), finalPos, rot, scale, color, useWorldPos));
+			glyphs.add(new Glyph(texture, finalPos, rot, scale, color, useWorldPos));
 		}
 
 		for(float offset : offsets) {

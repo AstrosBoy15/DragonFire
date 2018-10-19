@@ -7,14 +7,9 @@ import com.draglantix.renderEngine.objects.Objects;
 
 public class Rectangle extends Objects {
 
-	public Rectangle(int texture, Vector2f position, Vector2f rotation, Vector2f scale, Vector4f color,
+	public Rectangle(Vector2f position, Vector2f rotation, Vector2f scale, Vector4f color,
 			boolean usesWorldPos) {
-		super(texture, position, rotation, scale, color, usesWorldPos);
-
-	}
-
-	public Rectangle(Objects object) {
-		super(object);
+		super(position, rotation, scale, color, usesWorldPos);
 
 	}
 

@@ -3,7 +3,7 @@ package com.draglantix.renderEngine.objects;
 import org.joml.Matrix4f;
 import org.joml.Vector4f;
 
-import com.draglantix.renderEngine.engine.ShaderProgram;
+import com.draglantix.renderEngine.shaders.ShaderProgram;
 
 public abstract class ObjectShader extends ShaderProgram {
 
@@ -16,6 +16,7 @@ public abstract class ObjectShader extends ShaderProgram {
 	private int location_c3;
 	private int location_c4;
 	private int location_color;
+	private int location_usesTex;
 
 	public ObjectShader(String key) {
 		super(key);
@@ -36,6 +37,7 @@ public abstract class ObjectShader extends ShaderProgram {
 		location_c3 = super.getUniformLocation("c3");
 		location_c4 = super.getUniformLocation("c4");
 		location_color = super.getUniformLocation("color");
+		location_usesTex = super.getUniformLocation("usesTex");
 	}
 
 	public void loadFinalMatrix(Matrix4f matrix) {
@@ -44,6 +46,10 @@ public abstract class ObjectShader extends ShaderProgram {
 	
 	public void loadColorType(boolean useBlend) {
 		super.loadBoolean(location_colorType, useBlend);
+	}
+	
+	public void loadUsesTex(boolean useTex) {
+		super.loadBoolean(location_usesTex, useTex);
 	}
 	
 	public void loadColor(Vector4f color) {
