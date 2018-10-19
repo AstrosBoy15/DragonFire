@@ -41,15 +41,17 @@ public class Graphics {
 		shader = new GenShader("gen");
 		rectRender = new RectangleRenderer(shader, this);
 		imgRender = new ImageRenderer(shader, this);
-		GL30.glBindVertexArray(getQuad().getVaoID());
 		init();
 	}
 
 	private void init() {
+		GL30.glBindVertexArray(getQuad().getVaoID());
 		GL20.glEnableVertexAttribArray(0);
 		GL11.glEnable(GL11.GL_BLEND);
 		GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
 		GL11.glDisable(GL11.GL_DEPTH_TEST);
+		GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_WRAP_S, GL11.GL_CLAMP);
+		GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_WRAP_T, GL11.GL_CLAMP);
 	}
 
 	public void setCurrentCamera(ICamera cam) {
