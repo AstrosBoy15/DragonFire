@@ -14,6 +14,12 @@ public class Image extends Objects {
 
 	}
 	
+	public Image(Texture texture, Vector2f position, Vector2f rotation, Vector2f scale, Vector4f[] colors,
+			boolean usesWorldPos) {
+		super(texture, position, rotation, scale, colors, usesWorldPos);
+
+	}
+	
 	public Image(Objects obj) {
 		super(obj);
 	}

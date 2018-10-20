@@ -86,6 +86,13 @@ public class Graphics {
 		Image image = new Image(texture, position, rotation, scale, color, usesWorldPos);
 		imgRender.render(image);
 	}
+	
+	public void drawImage(Texture texture, Vector2f position, Vector2f rotation, Vector2f scale, Vector4f[] colors,
+			boolean usesWorldPos) {
+		prepare(getImageShader());
+		Image image = new Image(texture, position, rotation, scale, colors, usesWorldPos);
+		imgRender.render(image);
+	}
 
 	public void drawRect(Vector2f position, Vector2f rotation, Vector2f scale, Vector4f color, boolean useWorldPos) {
 		prepare(getRectShader());

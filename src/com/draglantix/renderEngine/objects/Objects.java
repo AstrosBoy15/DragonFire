@@ -20,7 +20,7 @@ public abstract class Objects {
 
 	private boolean blendColor;
 	private boolean usesTex = true;
-	
+
 	protected boolean usesWorldPos;
 
 	public Objects(Texture texture, Vector2f position, Vector2f rotation, Vector2f scale, Vector4f color,
@@ -34,9 +34,8 @@ public abstract class Objects {
 		updateTransformationMatrix(position, rotation, scale);
 		blendColor = true;
 	}
-	
-	public Objects(Vector2f position, Vector2f rotation, Vector2f scale, Vector4f color,
-			boolean usesWorldPos) {
+
+	public Objects(Vector2f position, Vector2f rotation, Vector2f scale, Vector4f color, boolean usesWorldPos) {
 		this.texture = null;
 		this.position = position;
 		this.rotation = rotation;
@@ -83,7 +82,7 @@ public abstract class Objects {
 		updateTransformationMatrix(position, rotation, scale);
 		blendColor = false;
 	}
-	
+
 	public Objects(Objects obj) {
 		this.texture = obj.texture;
 		this.position = obj.position;
@@ -142,7 +141,7 @@ public abstract class Objects {
 	public Vector4f getColor() {
 		return color;
 	}
-	
+
 	public boolean usesTex() {
 		return usesTex;
 	}
@@ -166,7 +165,7 @@ public abstract class Objects {
 	public void setA(float alpha) {
 		this.color.w = alpha;
 	}
-	
+
 	public Vector4f[] getColors() {
 		return colors;
 	}
@@ -174,11 +173,11 @@ public abstract class Objects {
 	public void setColors(Vector4f[] colors) {
 		this.colors = colors;
 	}
-	
+
 	public void setColorI(int i, Vector4f color) {
 		colors[i] = color;
 	}
-	
+
 	public boolean getColorType() {
 		return blendColor;
 	}
@@ -202,5 +201,5 @@ public abstract class Objects {
 	public boolean doesUseWorldPos() {
 		return usesWorldPos;
 	}
-	
+
 }
