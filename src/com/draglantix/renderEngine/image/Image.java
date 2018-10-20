@@ -24,7 +24,6 @@ public class Image extends Objects {
 		super(obj);
 	}
 
-	@Override
 	public void tick() {
 
 	}

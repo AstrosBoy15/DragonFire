@@ -13,7 +13,6 @@ public class Rectangle extends Objects {
 
 	}
 
-	@Override
 	public void tick() {
 
 	}

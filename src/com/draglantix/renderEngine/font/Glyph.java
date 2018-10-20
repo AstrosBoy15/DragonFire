@@ -11,10 +11,5 @@ public class Glyph extends Objects{
 	public Glyph(Texture texture, Vector2f position, Vector2f rotation, Vector2f scale, Vector4f color, boolean usesWorldPos) {
 		super(texture, position, rotation, scale, color, usesWorldPos);
 	}
-
-	@Override
-	public void tick() {
-		
-	}
 	
 }

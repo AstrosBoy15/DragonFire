@@ -7,7 +7,7 @@ import org.joml.Vector4f;
 import com.draglantix.renderEngine.models.SpriteSheet;
 import com.draglantix.renderEngine.models.Texture;
 
-public abstract class Objects {
+public class Objects {
 
 	protected Texture texture;
 	protected SpriteSheet sheet;
@@ -95,8 +95,6 @@ public abstract class Objects {
 		blendColor = obj.blendColor;
 		usesTex = obj.usesTex;
 	}
-
-	public abstract void tick();
 
 	public Texture getTexture() {
 		return texture;
