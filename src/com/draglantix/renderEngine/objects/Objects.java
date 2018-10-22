@@ -6,6 +6,7 @@ import org.joml.Vector4f;
 
 import com.draglantix.renderEngine.models.SpriteSheet;
 import com.draglantix.renderEngine.models.Texture;
+import com.draglantix.renderEngine.utils.Color;
 
 public class Objects {
 
@@ -15,15 +16,15 @@ public class Objects {
 	protected Vector2f position, rotation, scale;
 	protected Matrix4f transformation;
 
-	protected Vector4f color;
-	protected Vector4f[] colors;
+	protected Color color;
+	protected Color[] colors;
 
 	private boolean blendColor;
 	private boolean usesTex = true;
 
 	protected boolean usesWorldPos;
 
-	public Objects(Texture texture, Vector2f position, Vector2f rotation, Vector2f scale, Vector4f color,
+	public Objects(Texture texture, Vector2f position, Vector2f rotation, Vector2f scale, Color color,
 			boolean usesWorldPos) {
 		this.texture = texture;
 		this.position = position;
@@ -35,7 +36,7 @@ public class Objects {
 		blendColor = true;
 	}
 
-	public Objects(Vector2f position, Vector2f rotation, Vector2f scale, Vector4f color, boolean usesWorldPos) {
+	public Objects(Vector2f position, Vector2f rotation, Vector2f scale, Color color, boolean usesWorldPos) {
 		this.texture = null;
 		this.position = position;
 		this.rotation = rotation;
@@ -47,7 +48,7 @@ public class Objects {
 		usesTex = false;
 	}
 
-	public Objects(SpriteSheet sheet, Vector2f position, Vector2f rotation, Vector2f scale, Vector4f color,
+	public Objects(SpriteSheet sheet, Vector2f position, Vector2f rotation, Vector2f scale, Color color,
 			boolean usesWorldPos) {
 		this.sheet = sheet;
 		this.position = position;
@@ -59,7 +60,7 @@ public class Objects {
 		blendColor = true;
 	}
 
-	public Objects(Texture texture, Vector2f position, Vector2f rotation, Vector2f scale, Vector4f[] colors,
+	public Objects(Texture texture, Vector2f position, Vector2f rotation, Vector2f scale, Color[] colors,
 			boolean usesWorldPos) {
 		this.texture = texture;
 		this.position = position;
@@ -71,7 +72,7 @@ public class Objects {
 		blendColor = false;
 	}
 
-	public Objects(SpriteSheet sheet, Vector2f position, Vector2f rotation, Vector2f scale, Vector4f[] colors,
+	public Objects(SpriteSheet sheet, Vector2f position, Vector2f rotation, Vector2f scale, Color[] colors,
 			boolean usesWorldPos) {
 		this.sheet = sheet;
 		this.position = position;
@@ -136,7 +137,7 @@ public class Objects {
 		this.scale = scale;
 	}
 
-	public Vector4f getColor() {
+	public Color getColor() {
 		return color;
 	}
 
@@ -144,35 +145,43 @@ public class Objects {
 		return usesTex;
 	}
 
-	public void setColor(Vector4f color) {
+	public void setColor(Color color) {
 		this.color = color;
 	}
 
 	public void setR(float red) {
-		this.color.x = red;
+		this.color.setR(red);
 	}
 
 	public void setG(float green) {
-		this.color.y = green;
+		this.color.setG(green);
 	}
 
 	public void setB(float blue) {
-		this.color.z = blue;
+		this.color.setB(blue);
 	}
 
 	public void setA(float alpha) {
-		this.color.w = alpha;
+		this.color.setAlpha(alpha);
 	}
 
-	public Vector4f[] getColors() {
+	public Color[] getColors() {
 		return colors;
 	}
+	
+	public Vector4f[] getColorsVectors() {
+		Vector4f[] colorsV = new Vector4f[colors.length];
+		for(int i = 0; i  < colors.length; i++) {
+			colorsV[i] = colors[i].getColorVector();
+		}
+		return colorsV;
+	}
 
-	public void setColors(Vector4f[] colors) {
+	public void setColors(Color[] colors) {
 		this.colors = colors;
 	}
 
-	public void setColorI(int i, Vector4f color) {
+	public void setColorI(int i, Color color) {
 		colors[i] = color;
 	}
 

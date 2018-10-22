@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.joml.Vector2f;
-import org.joml.Vector4f;
 
 import com.draglantix.renderEngine.graphics.Graphics;
 import com.draglantix.renderEngine.models.Texture;
+import com.draglantix.renderEngine.utils.Color;
 import com.draglantix.renderEngine.utils.Functions;
 
 public class Message {
@@ -16,7 +16,7 @@ public class Message {
 	private String msg;
 
 	private Vector2f pos, rot, scale, orig;
-	private Vector4f color;
+	private Color color;
 
 	private List<Glyph> glyphs = new ArrayList<Glyph>();
 	private List<Float> offsets = new ArrayList<Float>();
@@ -25,8 +25,8 @@ public class Message {
 
 	private boolean useWorldPos;
 
-	public Message(String msg, Vector2f pos, Vector2f rot, Vector2f scale, Vector4f color,
-			boolean useWorldPos, Graphics graphics) {
+	public Message(String msg, Vector2f pos, Vector2f rot, Vector2f scale, Color color, boolean useWorldPos,
+			Graphics graphics) {
 		this.font = graphics.getFont();
 		this.msg = msg.toUpperCase();
 		this.pos = pos;
@@ -73,27 +73,27 @@ public class Message {
 		return font;
 	}
 
-	public Vector4f getColor() {
+	public Color getColor() {
 		return color;
 	}
 
-	public void setColor(Vector4f color) {
+	public void setColor(Color color) {
 		this.color = color;
 	}
-	
+
 	public void setR(float red) {
-		this.color.x = red;
+		this.color.setR(red);
 	}
 
 	public void setG(float green) {
-		this.color.y = green;
+		this.color.setG(green);
 	}
 
 	public void setB(float blue) {
-		this.color.z = blue;
+		this.color.setB(blue);
 	}
 
 	public void setA(float alpha) {
-		this.color.w = alpha;
+		this.color.setAlpha(alpha);
 	}
 }

@@ -1,7 +1,6 @@
 package com.draglantix.renderEngine.graphics;
 
 import org.joml.Vector2f;
-import org.joml.Vector4f;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL20;
 import org.lwjgl.opengl.GL30;
@@ -19,6 +18,7 @@ import com.draglantix.renderEngine.objects.ObjectShader;
 import com.draglantix.renderEngine.rectangle.Rectangle;
 import com.draglantix.renderEngine.rectangle.RectangleRenderer;
 import com.draglantix.renderEngine.shaders.GenShader;
+import com.draglantix.renderEngine.utils.Color;
 
 public class Graphics {
 
@@ -80,27 +80,27 @@ public class Graphics {
 		imgRender.render(image);
 	}
 
-	public void drawImage(Texture texture, Vector2f position, Vector2f rotation, Vector2f scale, Vector4f color,
+	public void drawImage(Texture texture, Vector2f position, Vector2f rotation, Vector2f scale, Color color,
 			boolean usesWorldPos) {
 		prepare(getImageShader());
 		Image image = new Image(texture, position, rotation, scale, color, usesWorldPos);
 		imgRender.render(image);
 	}
 	
-	public void drawImage(Texture texture, Vector2f position, Vector2f rotation, Vector2f scale, Vector4f[] colors,
+	public void drawImage(Texture texture, Vector2f position, Vector2f rotation, Vector2f scale, Color[] colors,
 			boolean usesWorldPos) {
 		prepare(getImageShader());
 		Image image = new Image(texture, position, rotation, scale, colors, usesWorldPos);
 		imgRender.render(image);
 	}
 
-	public void drawRect(Vector2f position, Vector2f rotation, Vector2f scale, Vector4f color, boolean useWorldPos) {
+	public void drawRect(Vector2f position, Vector2f rotation, Vector2f scale, Color color, boolean useWorldPos) {
 		prepare(getRectShader());
 		Rectangle rectangle = new Rectangle(position, rotation, scale, color, useWorldPos);
 		rectRender.render(rectangle);
 	}
 
-	public void drawFont(String msg, Vector2f pos, Vector2f rot, Vector2f scale, Vector4f color, boolean usesWorldPos) {
+	public void drawFont(String msg, Vector2f pos, Vector2f rot, Vector2f scale, Color color, boolean usesWorldPos) {
 		prepare(getImageShader());
 		Message message = new Message(msg, pos, rot, scale, color, usesWorldPos, this);
 		message.setFont(getFont());

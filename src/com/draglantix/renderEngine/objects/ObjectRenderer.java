@@ -53,9 +53,9 @@ public abstract class ObjectRenderer {
 		shader.loadUsesTex(obj.usesTex());
 		
 		if(obj.getColorType()) {
-			shader.loadColor(obj.getColor());
+			shader.loadColor(obj.getColor().getColorVector());
 		} else {
-			shader.loadColors(obj.getColors());
+			shader.loadColors(obj.getColorsVectors());
 		}
 	}
 
