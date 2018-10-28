@@ -18,6 +18,7 @@ import com.draglantix.renderEngine.objects.ObjectShader;
 import com.draglantix.renderEngine.rectangle.Rectangle;
 import com.draglantix.renderEngine.rectangle.RectangleRenderer;
 import com.draglantix.renderEngine.shaders.GenShader;
+import com.draglantix.renderEngine.shaders.ShaderProgram;
 import com.draglantix.renderEngine.utils.Color;
 
 public class Graphics {
@@ -35,7 +36,7 @@ public class Graphics {
 	
 	private GenShader shader;
 
-	private ObjectShader currentShader;
+	private ShaderProgram currentShader;
 
 	public Graphics() {
 		shader = new GenShader("gen");
@@ -125,9 +126,8 @@ public class Graphics {
 		return currentFont;
 	}
 
-	private void prepare(ObjectShader shader) {
+	public void prepare(ShaderProgram shader) {
 		if(currentShader != shader) {
-			System.out.println("Works");
 			if(currentShader != null) {
 				finish(currentShader);
 			}
@@ -136,8 +136,7 @@ public class Graphics {
 		}
 	}
 
-	private void finish(ObjectShader shader) {
-		System.out.println("Works");
+	private void finish(ShaderProgram shader) {
 		shader.stop();
 	}
 
