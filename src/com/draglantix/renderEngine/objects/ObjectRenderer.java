@@ -48,8 +48,6 @@ public abstract class ObjectRenderer {
 			shader.loadFinalMatrix(Functions.getFinalMatrix(transformation));
 		}
 
-		shader.loadColorType(obj.getColorType());
-
 		shader.loadUsesTex(obj.usesTex());
 		
 		if(obj.getColorType()) {

@@ -1,4 +1,4 @@
-package com.draglantix.postProcessing;
+package com.draglantix.renderEngine.postProcessing;
 
 import com.draglantix.renderEngine.graphics.Graphics;
 import com.draglantix.renderEngine.utils.FBO;

@@ -125,6 +125,11 @@ public class Graphics {
 	public Font getFont() {
 		return currentFont;
 	}
+	
+	public void clearColor(Color color) {
+		GL11.glClear(GL11.GL_COLOR_BUFFER_BIT);
+		GL11.glClearColor(color.getR(), color.getG(), color.getB(), color.getAlpha());
+	}
 
 	public void prepare(ShaderProgram shader) {
 		if(currentShader != shader) {

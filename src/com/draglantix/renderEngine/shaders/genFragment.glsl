@@ -6,16 +6,11 @@ out vec4 out_Color;
 
 uniform sampler2D entityTexture;
 
-uniform bool colorType;
 uniform bool usesTex;
 
-uniform vec4 c0;
-uniform vec4 c1;
-uniform vec4 c2;
-uniform vec4 c3;
-uniform vec4 c4;
+uniform vec4 colors[20];
 
-uniform vec4 color;
+uniform int colorsLength;
 
 void main(void) {
 	if (usesTex) {
@@ -25,20 +20,12 @@ void main(void) {
 	}
 
 	float scaleColor = out_Color.x * 255;
+	float bounds = 255 / colorsLength;
 
-	if (colorType == true) {
-		out_Color = vec4(color * out_Color);
-	} else {
-		if (scaleColor < 51) {
-			out_Color = vec4(c0 * out_Color);
-		} else if (scaleColor >= 51 && scaleColor < 102) {
-			out_Color = vec4(c1 * out_Color);
-		} else if (scaleColor >= 102 && scaleColor < 153) {
-			out_Color = vec4(c2 * out_Color);
-		} else if (scaleColor >= 153 && scaleColor < 204) {
-			out_Color = vec4(c3 * out_Color);
-		} else {
-			out_Color = vec4(c4 * out_Color);
+	for (int i = 0; i < colorsLength; i++) {
+		if (scaleColor >= bounds * i && scaleColor <= bounds * (i + 1)) {
+			out_Color = vec4(colors[i] * out_Color);
 		}
 	}
+
 }
